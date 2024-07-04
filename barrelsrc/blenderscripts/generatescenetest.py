@@ -1,8 +1,9 @@
+import os
 from pathlib import Path
 
 import bpy
 
-barrel_obj_path = Path("modeling/models3d/barrel-nonozzle.obj")
+barrel_obj_path = Path("barrels/data/models3d/barrel-nonozzle.obj")
 
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete()

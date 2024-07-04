@@ -1,6 +1,7 @@
-function xyzs = randCylPoints(model, npoints)
+function xyzs = randCylPts(model, npoints)
     % generates uniformly distributed points within the volume of
     % a defined cylinder
+    % returns nx3 array
     axis = model.Orientation;
     axis = axis / norm(axis);
     axnull = null(axis);

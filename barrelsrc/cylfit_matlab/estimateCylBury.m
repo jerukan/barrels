@@ -11,6 +11,9 @@ function burialVolume = estimateCylBury(model, steps)
     len2d = sqrt(axvec(1)^2 + axvec(2)^2);
     % the normal vector to the axis vector that points up in the
     % z-axis
+    % note this basically rotates the cylinder to be aligned with
+    % the y-axis to make calculations easier. relative orientation
+    % to seafloor is unchanged.
     ax_normvec = [-axvec(3); 0; len2d];
     ax_normvec = ax_normvec / norm(ax_normvec);
     
@@ -26,7 +29,7 @@ function burialVolume = estimateCylBury(model, steps)
             % circle intersects ground, calculate circular segment info
             h = r - norm(axpt_to_ground);
             % circular segment area
-            % formula from wikipedia lol
+            % formula from wikipedia
             a = r^2 * acos(1 - (h / r)) - (r - h) * sqrt(r^2 - (r - h)^2);
             if axpt_to_ground(3) > 0
                 % the point on axis is buried, take complement of circular
