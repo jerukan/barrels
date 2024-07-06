@@ -1,6 +1,3 @@
-[submodule "barrelsrc/lang-segment-anything"]
-	path = barrelsrc/lang-segment-anything
+[submodule "barrels/lang-segment-anything"]
+	path = barrels/lang-segment-anything
 	url = git@github.com:luca-medeiros/lang-segment-anything.git
-[submodule "barrelsrc/GroundingDINO"]
-	path = barrelsrc/GroundingDINO
-	url = git@github.com:IDEA-Research/GroundingDINO.git

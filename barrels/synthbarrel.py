@@ -28,24 +28,18 @@ def random_cylinder(x1, x2, r, npoints):
 
 def classify_points(points, a, b, c, d):
     """Function to classify points based on the plane"""
-    above_plane = 0
-    below_plane = 0
-    for point in points:
-        x, y, z = point
-        value = a * x + b * y + c * z + d
-        if value > 0:
-            above_plane += 1
-        else:
-            below_plane += 1
-    return above_plane, below_plane
+    results = np.array([a, b, c]) @ points.T + d
+    above_plane = results >= 0
+    return (above_plane).sum(), (~above_plane).sum()
 
 
-def monte_carlo_volume_ratio(n_points, r, h, a, b, c, d):
+def monte_carlo_volume_ratio(n_points, x1, x2, r, a, b, c, d):
     """Monte Carlo method to estimate volume ratio"""
-    points = random_cylinder(n_points, r, h)
+    points = random_cylinder(x1, x2, r, n_points)
     above_plane, below_plane = classify_points(points, a, b, c, d)
-    ratio = above_plane / below_plane
+    ratio = above_plane / (above_plane + below_plane)
     return ratio
+
 
 def plot_cylinder_and_plane(r, h, a, b, c, d):
     """Function to plot the cylinder and the plane"""

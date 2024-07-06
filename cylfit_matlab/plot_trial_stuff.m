@@ -1,5 +1,5 @@
 % plotting for visualization
-i = 1330;
+i = 7;
 ax = subplot(1, 1, 1);
 pcshow(pointCloud(cyl_pcs{i}.Location, Color='r'))
 % pcshowcus(ax, cyl_pcs{i}, 'all', 'b');
