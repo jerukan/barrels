@@ -2,6 +2,8 @@ data/**
 !data/.gitkeep
 results/**
 !results/.gitkeep
+checkpoints/**
+!checkpoints/.gitkeep
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
