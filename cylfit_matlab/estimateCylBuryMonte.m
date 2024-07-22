@@ -1,7 +1,6 @@
-function burialVolume = estimateCylBuryMonte(model, npoints)
-    % monte carlo estimation of cylinder burial
+function burialRatio = estimateCylBuryMonte(model, npoints, axidx)
+    % monte carlo estimation of cylinder burial ratio
     xyzs = randCylPts(model, npoints);
-    undermask = xyzs(: ,3) <= 0;
-    cylvol = cylVolume(model);
-    burialVolume = cylvol * (sum(undermask) / npoints);
+    undermask = xyzs(:, axidx) <= 0;
+    burialRatio = sum(undermask) / npoints;
 end
