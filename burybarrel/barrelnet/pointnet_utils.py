@@ -36,8 +36,15 @@ class STN3d(nn.Module):
         x = F.relu(self.bn5(self.fc2(x)))
         x = self.fc3(x)
 
-        iden = Variable(torch.from_numpy(np.array([1, 0, 0, 0, 1, 0, 0, 0, 1]).astype(np.float32))).view(1, 9).repeat(
-            batchsize, 1)
+        iden = (
+            Variable(
+                torch.from_numpy(
+                    np.array([1, 0, 0, 0, 1, 0, 0, 0, 1]).astype(np.float32)
+                )
+            )
+            .view(1, 9)
+            .repeat(batchsize, 1)
+        )
         if x.is_cuda:
             iden = iden.cuda()
         x = x + iden
@@ -76,8 +83,11 @@ class STNkd(nn.Module):
         x = F.relu(self.bn5(self.fc2(x)))
         x = self.fc3(x)
 
-        iden = Variable(torch.from_numpy(np.eye(self.k).flatten().astype(np.float32))).view(1, self.k * self.k).repeat(
-            batchsize, 1)
+        iden = (
+            Variable(torch.from_numpy(np.eye(self.k).flatten().astype(np.float32)))
+            .view(1, self.k * self.k)
+            .repeat(batchsize, 1)
+        )
         if x.is_cuda:
             iden = iden.cuda()
         x = x + iden
@@ -89,7 +99,7 @@ class PointNetEncoder(nn.Module):
     def __init__(self, global_feat=True, use_Tnet=True, channel=3):
         """
         Point Net Encoder . align_input - when False, doesn't use T-Net for transforming points
-        
+
         """
         super(PointNetEncoder, self).__init__()
         self.stn = STN3d(channel)
@@ -139,10 +149,12 @@ class PointNetEncoder(nn.Module):
 
 
 class PointNetEncoderBarrel(nn.Module):
-    def __init__(self, global_feat=True, feature_transform=False, align_input=True, channel=3):
+    def __init__(
+        self, global_feat=True, feature_transform=False, align_input=True, channel=3
+    ):
         """
         Point Net Encoder . align_input - when False, doesn't use T-Net for transforming points
-        
+
         """
         super(PointNetEncoderBarrel, self).__init__()
         self.stn = STN3d(channel)
@@ -170,7 +182,7 @@ class PointNetEncoderBarrel(nn.Module):
             x = torch.cat([x, feature], dim=2)
             x_trans = torch.cat([x, feature], dim=2)
         x = x.transpose(2, 1)
-        x_trans 
+        x_trans
         x = F.relu(self.bn1(self.conv1(x)))
 
         if self.feature_transform:
@@ -193,11 +205,12 @@ class PointNetEncoderBarrel(nn.Module):
             return torch.cat([x, pointfeat], 1), trans, trans_feat
 
 
-
 def feature_transform_reguliarzer(trans):
     d = trans.size()[1]
     I = torch.eye(d)[None, :, :]
     if trans.is_cuda:
         I = I.cuda()
-    loss = torch.mean(torch.norm(torch.bmm(trans, trans.transpose(2, 1)) - I, dim=(1, 2)))
+    loss = torch.mean(
+        torch.norm(torch.bmm(trans, trans.transpose(2, 1)) - I, dim=(1, 2))
+    )
     return loss

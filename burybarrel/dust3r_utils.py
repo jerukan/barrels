@@ -17,7 +17,7 @@ def _resize_pil_image(img, long_edge_size):
         interp = Image.LANCZOS
     elif S <= long_edge_size:
         interp = Image.BICUBIC
-    new_size = tuple(int(round(x*long_edge_size/S)) for x in img.size)
+    new_size = tuple(int(round(x * long_edge_size / S)) for x in img.size)
     return img.resize(new_size, interp)
 
 
@@ -26,20 +26,20 @@ def resize_to_dust3r(img, size, square_ok=False, verbose=True):
     W1, H1 = img.size
     if size == 224:
         # resize short side to 224 (then crop)
-        img = _resize_pil_image(img, round(size * max(W1/H1, H1/W1)))
+        img = _resize_pil_image(img, round(size * max(W1 / H1, H1 / W1)))
     else:
         # resize long side to 512
         img = _resize_pil_image(img, size)
     W, H = img.size
-    cx, cy = W//2, H//2
+    cx, cy = W // 2, H // 2
     if size == 224:
         half = min(cx, cy)
-        img = img.crop((cx-half, cy-half, cx+half, cy+half))
+        img = img.crop((cx - half, cy - half, cx + half, cy + half))
     else:
-        halfw, halfh = ((2*cx)//16)*8, ((2*cy)//16)*8
+        halfw, halfh = ((2 * cx) // 16) * 8, ((2 * cy) // 16) * 8
         if not (square_ok) and W == H:
-            halfh = 3*halfw/4
-        img = img.crop((cx-halfw, cy-halfh, cx+halfw, cy+halfh))
+            halfh = 3 * halfw / 4
+        img = img.crop((cx - halfw, cy - halfh, cx + halfw, cy + halfh))
     W2, H2 = img.size
     if verbose:
         print(f"Resized image to {W2}x{H2}")
@@ -49,10 +49,10 @@ def resize_to_dust3r(img, size, square_ok=False, verbose=True):
 def save_dust3r_outs(scene, savepath):
     """
     Code to save output of dust3r after global alignment into a dictionary
-    
-    Args: 
+
+    Args:
         scene: Output of `global_aligner`
-    
+
     Returns:
         dict
         saves a .pth file, can be loaded using torch.load()
@@ -60,7 +60,7 @@ def save_dust3r_outs(scene, savepath):
     imgs = scene.imgs
     focals = scene.get_focals()  # Optimized Focal length of the N cameras [N,1]
     poses = scene.get_im_poses()  # Optimized Camera Poses [N,4,4]
-    pts3d = scene.get_pts3d()  # Point clouds as seen from each camera. 
+    pts3d = scene.get_pts3d()  # Point clouds as seen from each camera.
     out_dict = {}
     pts3d = [pts.cpu().detach() for pts in pts3d]
     out_dict["imgs"] = imgs  # list of np arrays, not tensors
@@ -100,17 +100,14 @@ def read_dust3r(path):
         )
         pose = outs["poses"][i]
         T = pose.numpy()
-        R, t = T[:3,:3], T[:3,3:].T
+        R, t = T[:3, :3], T[:3, 3:].T
         pts = outs["pts3d"][i]
-        # pts = outs["pts3d"][i]@R.T + t 
+        # pts = outs["pts3d"][i]@R.T + t
         pts_each.append(pts.numpy().reshape(-1, 3))
         cols_each.append(imguint8.reshape(-1, 3))
         pts_final.append(pts)
         cols_final.append(imguint8)
-        v3dcam = v3d.Camera(
-            spec=cam_spec,
-            world_from_cam=v3d.Transform.from_matrix(T)
-        )
+        v3dcam = v3d.Camera(spec=cam_spec, world_from_cam=v3d.Transform.from_matrix(T))
         v3dcams.append(v3dcam)
     v3dcams: v3d.Camera = dca.stack(v3dcams)
     pts_final = torch.stack(pts_final).view(-1, 3).numpy()

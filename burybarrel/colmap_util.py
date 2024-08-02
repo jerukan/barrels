@@ -16,7 +16,9 @@ def get_images(database_path: Union[str, Path]) -> List[pycolmap.Image]:
     return images
 
 
-def get_features(database_path: Union[str, Path]) -> Tuple[List[np.ndarray], List[np.ndarray]]:
+def get_features(
+    database_path: Union[str, Path]
+) -> Tuple[List[np.ndarray], List[np.ndarray]]:
     images = get_images(database_path)
 
     all_keypoints = []
@@ -29,9 +31,7 @@ def get_features(database_path: Union[str, Path]) -> Tuple[List[np.ndarray], Lis
             image_id = img.image_id
             image_name = img.name
 
-            cursor.execute(
-                "SELECT data FROM keypoints WHERE image_id=?;", (image_id,)
-            )
+            cursor.execute("SELECT data FROM keypoints WHERE image_id=?;", (image_id,))
             row = next(cursor)
             if row[0] is None:
                 keypoints = np.zeros((0, 6), dtype=np.float32)
@@ -63,6 +63,8 @@ def get_pc(reconstruction: pycolmap.Reconstruction) -> Tuple[np.ndarray, np.ndar
 Below read_array and write_array were ripped from
 https://github.com/colmap/colmap/blob/main/scripts/python/read_write_dense.py
 """
+
+
 def read_array(path):
     """Read a colmap depth map."""
     with open(path, "rb") as fid:
@@ -111,7 +113,5 @@ def write_array(array, path):
         data_list = data_1d.tolist()
         endian_character = "<"
         format_char_sequence = "".join(["f"] * len(data_list))
-        byte_data = struct.pack(
-            endian_character + format_char_sequence, *data_list
-        )
+        byte_data = struct.pack(endian_character + format_char_sequence, *data_list)
         fid.write(byte_data)

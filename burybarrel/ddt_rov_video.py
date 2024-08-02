@@ -5,7 +5,6 @@ For new dives, you must manually add the video paths and the start
 timestamps for each video.
 """
 
-
 from pathlib import Path
 
 import cv2
@@ -203,7 +202,7 @@ def get_frame(target_timestamp, ignore_oob=False, verbose=False, outdir=None):
             existing in the video footage.
         verbose (bool)
         outdir (path-like): Directory to save the frame captures to.
-    
+
     Returns:
         path-like: The path to a picture of the captured frame.
     """
@@ -232,14 +231,19 @@ def get_frame(target_timestamp, ignore_oob=False, verbose=False, outdir=None):
     if framenum > nframes:
         if ignore_oob:
             return None
-        raise ValueError(f"Exceeded maximum number of frames for video {vidpaths[vididx]}. Your timestamp ({target_timestamp}) is either out of range or is missing from the data itself!")
+        raise ValueError(
+            f"Exceeded maximum number of frames for video {vidpaths[vididx]}. Your timestamp ({target_timestamp}) is either out of range or is missing from the data itself!"
+        )
     vid.set(cv2.CAP_PROP_POS_FRAMES, framenum)
     _, frame = vid.read()
     if outdir is None:
         outdir = Path(f"ROV_Dive{str(divenum).zfill(2)}", "Images")
     outdir = Path(outdir)
     outdir.mkdir(exist_ok=True, parents=True)
-    outpath = outdir / f"rov-dive{divenum}-capture-{target_timestamp.strftime('%Y-%m-%dT%H-%M-%S')}.png"
+    outpath = (
+        outdir
+        / f"rov-dive{divenum}-capture-{target_timestamp.strftime('%Y-%m-%dT%H-%M-%S')}.png"
+    )
     cv2.imwrite(str(outpath), frame)
     if verbose:
         print(f"Wrote video frame to {outpath}")

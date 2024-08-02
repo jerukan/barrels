@@ -26,7 +26,17 @@ def save_mask(mask_np, filename):
     mask_image.save(filename)
 
 
-def display_image_with_masks(image, masks, boxes, logits, figwidth=15, savefig=None, all_masks=True, show_confidence=True, show=True):
+def display_image_with_masks(
+    image,
+    masks,
+    boxes,
+    logits,
+    figwidth=15,
+    savefig=None,
+    all_masks=True,
+    show_confidence=True,
+    show=True,
+):
     if not all_masks:
         masks = masks[:1]
         boxes = boxes[:1]
@@ -40,22 +50,38 @@ def display_image_with_masks(image, masks, boxes, logits, figwidth=15, savefig=N
 
     for box, logit in zip(boxes, logits):
         x_min, y_min, x_max, y_max = box
-        confidence_score = round(logit.item(), 2)  # Convert logit to a scalar before rounding
+        confidence_score = round(
+            logit.item(), 2
+        )  # Convert logit to a scalar before rounding
         box_width = x_max - x_min
         box_height = y_max - y_min
 
         # Draw bounding box
-        rect = plt.Rectangle((x_min, y_min), box_width, box_height, fill=False, edgecolor="red", linewidth=2)
+        rect = plt.Rectangle(
+            (x_min, y_min),
+            box_width,
+            box_height,
+            fill=False,
+            edgecolor="red",
+            linewidth=2,
+        )
         axes[0].add_patch(rect)
 
         # Add confidence score as text
         if show_confidence:
-            axes[0].text(x_min + 5, y_min + 5, f"Confidence: {confidence_score}", fontsize=8, color="red", verticalalignment="top")
+            axes[0].text(
+                x_min + 5,
+                y_min + 5,
+                f"Confidence: {confidence_score}",
+                fontsize=8,
+                color="red",
+                verticalalignment="top",
+            )
 
     for i, mask_np in enumerate(masks):
-        axes[i+1].imshow(mask_np, cmap="gray")
-        axes[i+1].set_title(f"Mask {i+1}")
-        axes[i+1].axis("off")
+        axes[i + 1].imshow(mask_np, cmap="gray")
+        axes[i + 1].set_title(f"Mask {i+1}")
+        axes[i + 1].axis("off")
 
     plt.tight_layout()
     if savefig is not None:
@@ -74,16 +100,32 @@ def display_image_with_boxes(image, boxes, logits, show=True):
 
     for box, logit in zip(boxes, logits):
         x_min, y_min, x_max, y_max = box
-        confidence_score = round(logit.item(), 2)  # Convert logit to a scalar before rounding
+        confidence_score = round(
+            logit.item(), 2
+        )  # Convert logit to a scalar before rounding
         box_width = x_max - x_min
         box_height = y_max - y_min
 
         # Draw bounding box
-        rect = plt.Rectangle((x_min, y_min), box_width, box_height, fill=False, edgecolor="red", linewidth=2)
+        rect = plt.Rectangle(
+            (x_min, y_min),
+            box_width,
+            box_height,
+            fill=False,
+            edgecolor="red",
+            linewidth=2,
+        )
         ax.add_patch(rect)
 
         # Add confidence score as text
-        ax.text(x_min, y_min, f"Confidence: {confidence_score}", fontsize=8, color="red", verticalalignment="top")
+        ax.text(
+            x_min,
+            y_min,
+            f"Confidence: {confidence_score}",
+            fontsize=8,
+            color="red",
+            verticalalignment="top",
+        )
     if show:
         plt.show()
     else:

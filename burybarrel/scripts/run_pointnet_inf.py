@@ -13,7 +13,11 @@ from tqdm import tqdm
 from burybarrel.utils import icp_translate
 from burybarrel.barrelnet.barrelnet import BarrelNet
 from burybarrel.barrelnet.data import pts2inference_format
-from burybarrel.synthbarrel import random_cylinder_surf, monte_carlo_volume_ratio, get_cyl_endpoints
+from burybarrel.synthbarrel import (
+    random_cylinder_surf,
+    monte_carlo_volume_ratio,
+    get_cyl_endpoints,
+)
 
 
 def run():
@@ -22,7 +26,7 @@ def run():
         synthdict = pickle.load(f)
     print(synthdict.keys())
 
-    ## Load Model 
+    ## Load Model
     model_path = "checkpoints/pointnet_iter80_fixed.pth"
     pointnet = BarrelNet(k=5, normal_channel=False)
     pointnet.load_state_dict(torch.load(model_path))
@@ -37,20 +41,22 @@ def run():
 
     trialresults = []
     for i in tqdm(range(ntrials)):
-    # for i in tqdm(range(20)):
+        # for i in tqdm(range(20)):
         results = {}
         cylnp = synthdict["pts"][i].numpy()
         axtruth = synthdict["axis_vectors"][i]
         rtruth = synthdict["radii"][i].numpy()
         # height in generated data is fixed at 1
         yoffsettruth = synthdict["burial_offsets"][i]
-        x1truth, x2truth  = get_cyl_endpoints(axtruth, 1, yoffsettruth, axidx=1)
-        
+        x1truth, x2truth = get_cyl_endpoints(axtruth, 1, yoffsettruth, axidx=1)
+
         results["axtruth"] = axtruth
         results["rtruth"] = rtruth
         results["yshifttruth"] = yoffsettruth
-        results["burialtruth"] = monte_carlo_volume_ratio(5000, x1truth, x2truth, rtruth, planecoeffs=[0, 1, 0, 0])
-        
+        results["burialtruth"] = monte_carlo_volume_ratio(
+            5000, x1truth, x2truth, rtruth, planecoeffs=[0, 1, 0, 0]
+        )
+
         cylnp = cylnp.astype(np.float32)
         pts = torch.from_numpy(cylnp).cuda()
         pts, scale = pts2inference_format(pts)
@@ -71,16 +77,18 @@ def run():
         x2pred -= translation
         c = (x1pred + x2pred) / 2
         y = c[1]
-        
+
         results["axpred"] = axis_pred
         results["rpred"] = r
         results["yshiftpred"] = y
-        results["burialpred"] = monte_carlo_volume_ratio(5000, x1pred, x2pred, r, planecoeffs=[0, 1, 0, 0])
+        results["burialpred"] = monte_carlo_volume_ratio(
+            5000, x1pred, x2pred, r, planecoeffs=[0, 1, 0, 0]
+        )
 
         # print("ahAHSFHJKSADHJKFSDHJKDFSHJKFSAD")
         # print(axis_pred, r, h, y)
         # print(axtruth, rtruth, h, yoffsettruth / h)
-        
+
         trialresults.append(results)
 
         # print("TRUTH")

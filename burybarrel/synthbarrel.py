@@ -64,14 +64,18 @@ class Cylinder:
         return random_cylinder_vol(self.x1, self.x2, self.r, npoints, sigma=sigma)
 
     def get_random_pts_surf(self, npoints, sigma=0, includecap=True):
-        return random_cylinder_surf(self.x1, self.x2, self.r, npoints, sigma=sigma, includecap=includecap)
-    
+        return random_cylinder_surf(
+            self.x1, self.x2, self.r, npoints, sigma=sigma, includecap=includecap
+        )
+
     def get_volume_ratio_monte(self, npoints, planecoeffs=None):
-        return monte_carlo_volume_ratio(npoints, self.x1, self.x2, self.r, planecoeffs=planecoeffs)
-    
+        return monte_carlo_volume_ratio(
+            npoints, self.x1, self.x2, self.r, planecoeffs=planecoeffs
+        )
+
     def get_pts_surf(self, nt=100, nv=5):
         return get_cylinder_surf(self.x1, self.x2, self.r, nt=nt, nv=nv)
-    
+
 
 def random_cylinder_vol(x1, x2, r, npoints, sigma=0):
     """
@@ -90,9 +94,22 @@ def random_cylinder_vol(x1, x2, r, npoints, sigma=0):
     rand_theta = np.random.random(npoints) * 2 * np.pi
     rand_h = np.random.random(npoints) * h
 
-    cosval = np.tile(axnull1, (npoints, 1)) * rand_r[..., None] * np.cos(rand_theta)[..., None]
-    sinval = np.tile(axnull2, (npoints, 1)) * rand_r[..., None] * np.sin(rand_theta)[..., None]
-    xyzs = cosval + sinval + np.tile(x1, (npoints, 1)) + rand_h[..., None] * np.tile(axis, (npoints, 1))
+    cosval = (
+        np.tile(axnull1, (npoints, 1))
+        * rand_r[..., None]
+        * np.cos(rand_theta)[..., None]
+    )
+    sinval = (
+        np.tile(axnull2, (npoints, 1))
+        * rand_r[..., None]
+        * np.sin(rand_theta)[..., None]
+    )
+    xyzs = (
+        cosval
+        + sinval
+        + np.tile(x1, (npoints, 1))
+        + rand_h[..., None] * np.tile(axis, (npoints, 1))
+    )
     if sigma > 0:
         xyzs += np.random.normal(0, sigma, xyzs.shape)
     return xyzs
@@ -121,15 +138,28 @@ def random_cylinder_surf(x1, x2, r, npoints, sigma=0, includecap=True):
     nside = npoints - 2 * ncap
     # sqrt radius to get uniform distribution
     rand_r = np.full(npoints, r, dtype=float)
-    rand_r[:2 * ncap] = r * np.sqrt(np.random.random(2 * ncap))
+    rand_r[: 2 * ncap] = r * np.sqrt(np.random.random(2 * ncap))
     rand_theta = np.random.random(npoints) * 2 * np.pi
     rand_h = np.random.random(npoints) * h
     rand_h[:ncap] = 0.0
-    rand_h[ncap:2 * ncap] = h
+    rand_h[ncap : 2 * ncap] = h
 
-    cosval = np.tile(axnull1, (npoints, 1)) * rand_r[..., None] * np.cos(rand_theta)[..., None]
-    sinval = np.tile(axnull2, (npoints, 1)) * rand_r[..., None] * np.sin(rand_theta)[..., None]
-    xyzs = cosval + sinval + np.tile(x1, (npoints, 1)) + rand_h[..., None] * np.tile(axis, (npoints, 1))
+    cosval = (
+        np.tile(axnull1, (npoints, 1))
+        * rand_r[..., None]
+        * np.cos(rand_theta)[..., None]
+    )
+    sinval = (
+        np.tile(axnull2, (npoints, 1))
+        * rand_r[..., None]
+        * np.sin(rand_theta)[..., None]
+    )
+    xyzs = (
+        cosval
+        + sinval
+        + np.tile(x1, (npoints, 1))
+        + rand_h[..., None] * np.tile(axis, (npoints, 1))
+    )
     if sigma > 0:
         xyzs += np.random.normal(0, sigma, xyzs.shape)
     return xyzs
@@ -145,7 +175,7 @@ def classify_points(points, a, b, c, d):
 def monte_carlo_volume_ratio(npoints, x1, x2, r, planecoeffs=None):
     """
     Monte Carlo method to estimate buried volume ratio (percent buried as decimal).
-    
+
     Args:
         planecoeffs: [a, b, c, d]
     """
@@ -162,10 +192,10 @@ def monte_carlo_volume_ratio(npoints, x1, x2, r, planecoeffs=None):
 def random_unitvec3(n=1):
     """
     Generates uniformly distributed 3D unit vector.
-    
+
     Args:
         n: number of vectors to generate
-        
+
     Returns:
         nx3 vector
     """
@@ -188,7 +218,9 @@ def generate_oriented_barrel(r, h, npoints, sigma=0, zlims=None, includecap=True
     bar_bot = -h * cylax / 2 + heightchange
     bar_top = h * cylax / 2 + heightchange
 
-    points_all = random_cylinder_surf(bar_bot, bar_top, r, npoints, sigma=sigma, includecap=includecap)
+    points_all = random_cylinder_surf(
+        bar_bot, bar_top, r, npoints, sigma=sigma, includecap=includecap
+    )
 
     # filter out buried points
     points = points_all[points_all[:, 2] >= 0, :]
@@ -198,9 +230,9 @@ def generate_oriented_barrel(r, h, npoints, sigma=0, zlims=None, includecap=True
 def get_cyl_endpoints(cylax, h, offset, axidx=2):
     """
     Get axis endpoints of a cylinder based on centroid with given axis up at 0.
-    
+
     axidx is 0 (x), 1 (y), 2 (z) up
-    
+
     Offset z input.
     """
     cylax = cylax / np.linalg.norm(cylax)
@@ -217,13 +249,13 @@ def get_cyl_endpoints(cylax, h, offset, axidx=2):
 def get_cylinder_surf(x1, x2, r, nt=100, nv=5):
     """
     Returns x,y,z meshgrids for plotting a cylinder surface.
-    
+
     Parametrize the cylinder of radius r, and endpoints x1, x2.
-    
+
     Args:
         nt: number of angles
         nv: number of heights
-    
+
     Returns:
         x, y, z meshgrids
     """
@@ -243,7 +275,12 @@ def get_cylinder_surf(x1, x2, r, nt=100, nv=5):
     gridsize = theta.size
     cosval = np.tile(axnull1, (gridsize, 1)) * r * np.cos(theta.reshape(-1))[..., None]
     sinval = np.tile(axnull2, (gridsize, 1)) * r * np.sin(theta.reshape(-1))[..., None]
-    xyzs = cosval + sinval + np.tile(x1, (gridsize, 1)) + v.reshape(-1)[..., None] * np.tile(axis, (gridsize, 1))
+    xyzs = (
+        cosval
+        + sinval
+        + np.tile(x1, (gridsize, 1))
+        + v.reshape(-1)[..., None] * np.tile(axis, (gridsize, 1))
+    )
     x = xyzs[:, 0].reshape(gridshape)
     y = xyzs[:, 1].reshape(gridshape)
     z = xyzs[:, 2].reshape(gridshape)

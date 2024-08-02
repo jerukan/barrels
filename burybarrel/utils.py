@@ -41,7 +41,7 @@ def segment_pc_from_mask(pc: v3d.Point3d, mask, v3dcam: v3d.Camera):
 def get_bbox_mask(bbox, W, H):
     """
     Sets values inside bounding box to 255.
-    
+
     Args:
         bbox: [x_min, y_min, x_max, y_max]
     """
@@ -55,7 +55,7 @@ def get_local_plane_mask(bbox, expandratio_in, expandratio_out, W, H):
     """
     Takes the difference between a larger bbox and an even larger bbox mask to get
     a 'frame' of the local plane around the barrel.
-    
+
     Args:
         bbox: [x_min, y_min, x_max, y_max]
         expandratio_in: expansion ratio of bbox sides for inner bbox
@@ -83,16 +83,20 @@ def get_local_plane_mask(bbox, expandratio_in, expandratio_out, W, H):
 def rotate_pts_to_ax(pts, normal, target, ret_R=False):
     normal = np.array(normal, dtype=float)
     target = np.array(target, dtype=float)
-    ang = np.arccos((target @ normal) / (np.linalg.norm(target) * np.linalg.norm(normal)))
+    ang = np.arccos(
+        (target @ normal) / (np.linalg.norm(target) * np.linalg.norm(normal))
+    )
     rotax = np.cross(normal, target)
-    eta = (rotax / np.linalg.norm(rotax))
+    eta = rotax / np.linalg.norm(rotax)
     theta = eta * ang
-    thetahat = np.array([
-        [0, -theta[2], theta[1]],
-        [theta[2], 0, -theta[0]],
-        [-theta[1], theta[0], 0]
-    ])
-    R = np.eye(3) + (np.sin(ang) / ang) * thetahat + ((1 - np.cos(ang)) / ang**2) * (thetahat @ thetahat)
+    thetahat = np.array(
+        [[0, -theta[2], theta[1]], [theta[2], 0, -theta[0]], [-theta[1], theta[0], 0]]
+    )
+    R = (
+        np.eye(3)
+        + (np.sin(ang) / ang) * thetahat
+        + ((1 - np.cos(ang)) / ang**2) * (thetahat @ thetahat)
+    )
     rotscenexyz = (R @ pts.T).T
     if ret_R:
         return rotscenexyz, R
@@ -100,37 +104,43 @@ def rotate_pts_to_ax(pts, normal, target, ret_R=False):
 
 
 def rotate_pts_to_ax_torch(pts, normal, target):
-    """ Given a point cloud with normal vector, rotate it such that the new normal matches the target vector
+    """Given a point cloud with normal vector, rotate it such that the new normal matches the target vector
     Args:
-		pts: (torch.tensor) [N, 3] point cloud
-		normal (torch.tensor)[3,] normal vector
-		target (torch.tensor) [3,] target normal vector
+                pts: (torch.tensor) [N, 3] point cloud
+                normal (torch.tensor)[3,] normal vector
+                target (torch.tensor) [3,] target normal vector
     Return:
-		rotated_pts (torch.tensor) [N, 3] rotated point cloud 
-    """ 
-    ang = torch.arccos((target @ normal)/(torch.linalg.norm(target)*torch.linalg.norm(normal)))
+                rotated_pts (torch.tensor) [N, 3] rotated point cloud
+    """
+    ang = torch.arccos(
+        (target @ normal) / (torch.linalg.norm(target) * torch.linalg.norm(normal))
+    )
     rotax = torch.cross(normal, target)
-    eta = (rotax / torch.linalg.norm(rotax))
+    eta = rotax / torch.linalg.norm(rotax)
     theta = eta * ang
-    thetahat = torch.tensor([
-        [0, -theta[2], theta[1]],
-        [theta[2], 0, -theta[0]],
-        [-theta[1], theta[0], 0]
-    ])
-    R = torch.eye(3) + (torch.sin(ang) / ang) * thetahat + ((1 - torch.cos(ang)) / ang**2) * (thetahat @ thetahat)
+    thetahat = torch.tensor(
+        [[0, -theta[2], theta[1]], [theta[2], 0, -theta[0]], [-theta[1], theta[0], 0]]
+    )
+    R = (
+        torch.eye(3)
+        + (torch.sin(ang) / ang) * thetahat
+        + ((1 - torch.cos(ang)) / ang**2) * (thetahat @ thetahat)
+    )
     rotscenexyz = pts @ R.T
     return rotscenexyz
 
 
-def icp_translate(source_pc, target_pc, max_iters=20, tol=1e-3, verbose=False, ntheta=3, nphi=3):
+def icp_translate(
+    source_pc, target_pc, max_iters=20, tol=1e-3, verbose=False, ntheta=3, nphi=3
+):
     """
     Extremely jank implementation of iterative closest point for only translation.
-    
+
     Initializes guesses of translation by sampling points on a sphere around the
     target point cloud.
-    
+
     source_pc assumed to be smaller than target_pc
-    
+
     Returns:
         translation: 3d numpy array
     """
@@ -145,7 +155,16 @@ def icp_translate(source_pc, target_pc, max_iters=20, tol=1e-3, verbose=False, n
         alltheta, allphi = np.meshgrid(thetas, phis)
         alltheta = alltheta.reshape(-1)
         allphi = allphi.reshape(-1)
-        offset_choices = scale * np.array([np.sin(allphi) * np.cos(alltheta), np.sin(allphi) * np.sin(alltheta), np.cos(allphi)]).T
+        offset_choices = (
+            scale
+            * np.array(
+                [
+                    np.sin(allphi) * np.cos(alltheta),
+                    np.sin(allphi) * np.sin(alltheta),
+                    np.cos(allphi),
+                ]
+            ).T
+        )
     else:
         offset_choices = np.array([None])
     alltranslations = np.zeros((len(offset_choices), 3))
