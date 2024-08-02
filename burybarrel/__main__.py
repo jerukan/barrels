@@ -17,3 +17,7 @@ def datagen_train_run():
 def run_pointnet_inference():
     from burybarrel.scripts import run_pointnet_inf
     run_pointnet_inf.run()
+
+
+if __name__ == "__main__":
+    cli()

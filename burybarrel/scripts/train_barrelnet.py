@@ -10,13 +10,13 @@ from torch.utils.tensorboard import SummaryWriter
 import uuid
 import yaml
 import roma
-from barrelnet.pointnet.data import generate_cylinder_pts, prepare_point_cloud, normalize_pc, normalize_pc_train
 from mpl_toolkits.mplot3d import Axes3D
 from torch.utils.data import Dataset, DataLoader
 
-from barrelnet.pointnet.pointnet_utils import PointNetEncoder, feature_transform_reguliarzer
-from barrelnet.pointnet.barrelnet import BarrelNet
-from barrelnet.pointnet.data import CylinderDataOccluded
+from burybarrel.barrelnet.data import generate_cylinder_pts, prepare_point_cloud, normalize_pc, normalize_pc_train
+from burybarrel.barrelnet.pointnet_utils import PointNetEncoder, feature_transform_reguliarzer
+from burybarrel.barrelnet.barrelnet import BarrelNet
+from burybarrel.barrelnet.data import CylinderDataOccluded
 
 def load_config(config_file):
     with open(config_file, 'r') as file:

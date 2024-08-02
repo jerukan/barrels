@@ -69,7 +69,7 @@ class Cylinder:
     def get_volume_ratio_monte(self, npoints, planecoeffs=None):
         return monte_carlo_volume_ratio(npoints, self.x1, self.x2, self.r, planecoeffs=planecoeffs)
     
-    def get_pts_surf(self, nt=100, nv=50):
+    def get_pts_surf(self, nt=100, nv=5):
         return get_cylinder_surf(self.x1, self.x2, self.r, nt=nt, nv=nv)
     
 
@@ -214,7 +214,7 @@ def get_cyl_endpoints(cylax, h, offset, axidx=2):
     return x1, x2
 
 
-def get_cylinder_surf(x1, x2, r, nt=100, nv=50):
+def get_cylinder_surf(x1, x2, r, nt=100, nv=5):
     """
     Returns x,y,z meshgrids for plotting a cylinder surface.
     
@@ -236,8 +236,8 @@ def get_cylinder_surf(x1, x2, r, nt=100, nv=50):
     axnull1 = axnull[:, 0]
     axnull2 = axnull[:, 1]
 
-    theta = np.linspace(0, 2*np.pi, nt)
-    v = np.linspace(0, h, nv )
+    theta = np.linspace(0, 2 * np.pi, nt)
+    v = np.linspace(0, h, nv)
     theta, v = np.meshgrid(theta, v)
     gridshape = theta.shape
     gridsize = theta.size

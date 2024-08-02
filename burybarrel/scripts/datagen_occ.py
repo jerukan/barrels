@@ -13,7 +13,7 @@ import yaml
 os.environ['PYOPENGL_PLATFORM'] = 'egl'
 mi.set_variant('cuda_ad_rgb')
 
-from barrelnet.pointnet.data import CylinderDataOccluded
+from burybarrel.barrelnet.data import CylinderDataOccluded
 # dset = CylinderDataOccluded(num_poses=100)
 
 

@@ -17,6 +17,7 @@ from burybarrel.synthbarrel import random_cylinder_surf, monte_carlo_volume_rati
 
 
 def run():
+    print("opening test dataset. this might take a while")
     with open("data/synthbarrel/testbarrels_1000_fixed.pkl", "rb") as f:
         synthdict = pickle.load(f)
     print(synthdict.keys())
@@ -48,7 +49,7 @@ def run():
         results["axtruth"] = axtruth
         results["rtruth"] = rtruth
         results["yshifttruth"] = yoffsettruth
-        results["burialtruth"] = monte_carlo_volume_ratio(5000, x1truth, x2truth, rtruth, 0, 1, 0, 0)
+        results["burialtruth"] = monte_carlo_volume_ratio(5000, x1truth, x2truth, rtruth, planecoeffs=[0, 1, 0, 0])
         
         cylnp = cylnp.astype(np.float32)
         pts = torch.from_numpy(cylnp).cuda()
@@ -74,7 +75,7 @@ def run():
         results["axpred"] = axis_pred
         results["rpred"] = r
         results["yshiftpred"] = y
-        results["burialpred"] = monte_carlo_volume_ratio(5000, x1pred, x2pred, r, 0, 1, 0, 0)
+        results["burialpred"] = monte_carlo_volume_ratio(5000, x1pred, x2pred, r, planecoeffs=[0, 1, 0, 0])
 
         # print("ahAHSFHJKSADHJKFSDHJKDFSHJKFSAD")
         # print(axis_pred, r, h, y)

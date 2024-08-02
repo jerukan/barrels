@@ -22,6 +22,14 @@ pip install jupyter plotly dill pyransac3d open3d transforms3d roma pyrender mit
 
 ## Script running
 
+Display list of available commands:
+
 ```shell
-python -m burybarrel script_name --args
+python -m burybarrel --help
+```
+
+Running them:
+
+```shell
+python -m burybarrel script_name [ARGS]
 ```
