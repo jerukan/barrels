@@ -1,74 +1,74 @@
 barrel1:
-  path: ../data/dive-data/Dive8/clips/barrel1.mp4
+  path: data/dive-data/Dive8/clips/barrel1.mp4
   start_time: 2023-04-14T11:15:24
   timezone: US/Pacific
 
 barrelddt1:
-  path: ../data/dive-data/Dive8/clips/barrelddt1.mp4
+  path: data/dive-data/Dive8/clips/barrelddt1.mp4
   start_time: 2023-04-14T14:26:54
   timezone: US/Pacific
 
 barreltriplet:
-  path: ../data/dive-data/Dive8/clips/barreltriplet.mp4
+  path: data/dive-data/Dive8/clips/barreltriplet.mp4
   start_time: 2023-04-14T14:55:46
   timezone: US/Pacific
 
 barrel2:
-  path: ../data/dive-data/Dive8/clips/barrel2.mp4
+  path: data/dive-data/Dive8/clips/barrel2.mp4
   start_time: 2023-04-14T16:15:58
   timezone: US/Pacific
 
 barrelddt2:
-  path: ../data/dive-data/Dive8/clips/barrelddt2.mp4
+  path: data/dive-data/Dive8/clips/barrelddt2.mp4
   start_time: 2023-04-14T14:43:22
   timezone: US/Pacific
 
 barrel3:
-  path: ../data/dive-data/Dive8/clips/barrel3.mp4
+  path: data/dive-data/Dive8/clips/barrel3.mp4
   start_time: 2023-04-14T15:02:42
   timezone: US/Pacific
 
 barrelddt3:
-  path: ../data/dive-data/Dive8/clips/barrelddt3.mp4
+  path: data/dive-data/Dive8/clips/barrelddt3.mp4
   start_time: 2023-04-14T15:05:23
   timezone: US/Pacific
 
 barrelddt4:
-  path: ../data/dive-data/Dive8/clips/barrelddt4.mp4
+  path: data/dive-data/Dive8/clips/barrelddt4.mp4
   start_time: 2023-04-14T13:07:36
   timezone: US/Pacific
 
 barrel4:
-  path: ../data/dive-data/Dive8/clips/barrel4.mp4
+  path: data/dive-data/Dive8/clips/barrel4.mp4
   start_time: 2023-04-14T13:04:49
   timezone: US/Pacific
 
 seafloor:
-  path: ../data/dive-data/Dive8/clips/seafloor.mp4
+  path: data/dive-data/Dive8/clips/seafloor.mp4
   start_time: 2023-04-14T12:24:20
   timezone: US/Pacific
 
 dive8-barrel-15-04:
-  path: ../data/dive-data/Dive8/clips/dive8-barrel-15-04.mp4
+  path: data/dive-data/Dive8/clips/dive8-barrel-15-04.mp4
   start_time: 2023-04-14T15:05:46
   timezone: US/Pacific
 
 dive8-barrel-15-14:
-  path: ../data/dive-data/Dive8/clips/dive8-barrel-15-14.mp4
+  path: data/dive-data/Dive8/clips/dive8-barrel-15-14.mp4
   start_time: 2023-04-14T15:15:39
   timezone: US/Pacific
 
 dive8-barrel-10-45:
-  path: ../data/dive-data/Dive8/clips/dive8-barrel-10-45.mp4
+  path: data/dive-data/Dive8/clips/dive8-barrel-10-45.mp4
   start_time: 2023-04-14T10:46:31
   timezone: US/Pacific
 
 dive8-barrel-10-49:
-  path: ../data/dive-data/Dive8/clips/dive8-barrel-10-49.mp4
+  path: data/dive-data/Dive8/clips/dive8-barrel-10-49.mp4
   start_time: 2023-04-14T10:49:31
   timezone: US/Pacific
 
 dive8-barrel-11-04:
-  path: ../data/dive-data/Dive8/clips/dive8-barrel-11-04.mp4
+  path: data/dive-data/Dive8/clips/dive8-barrel-11-04.mp4
   start_time: 2023-04-14T11:04:09
   timezone: US/Pacific
