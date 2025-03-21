@@ -54,6 +54,20 @@ dive8-barrel-10-45:
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
 
+dive8-barrel-10-49:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-10-49.mp4
+  start_time: 2023-04-14T10:49:34
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+
+dive8-barrel-11-04:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-11-04.mp4
+  start_time: 2023-04-14T11:04:09
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+
 dive3-depthcharge-03-04:
   input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
   start_time: 2023-04-07T03:04:54
