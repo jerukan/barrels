@@ -11,6 +11,7 @@ default:
   increase_contrast: False
   denoise_depth: True
   object_name: ~
+  description: ~
 
 barrel1:
   input_path: data/dive-data/Dive8/clips/barrel1.mp4
@@ -18,6 +19,7 @@ barrel1:
   step: 25
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: 45 degree half-ish buried barrel
 
 barrel2:
   input_path: data/dive-data/Dive8/clips/barrel2.mp4
@@ -25,6 +27,7 @@ barrel2:
   step: 25
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: barrel on side
 
 barrel4:
   input_path: data/dive-data/Dive8/clips/barrel4.mp4
@@ -32,6 +35,7 @@ barrel4:
   step: 25
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: 45 degree half-ish buried barrel
 
 barrelddt1:
   input_path: data/dive-data/Dive8/clips/barrelddt1.mp4
@@ -39,6 +43,7 @@ barrelddt1:
   step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: upright mostly unburied barrel with ddt ring
 
 dive8-barrel-10-24:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-10-24.mp4
@@ -46,6 +51,7 @@ dive8-barrel-10-24:
   step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: barrel on side with hole on cap
 
 dive8-barrel-10-45:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-10-45.mp4
@@ -53,6 +59,7 @@ dive8-barrel-10-45:
   step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: barrel on side with faint ring
 
 dive8-barrel-10-49:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-10-49.mp4
@@ -60,6 +67,15 @@ dive8-barrel-10-49:
   step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: almost sideways barrel, bent in middle
+
+dive8-barrel-10-56:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-10-56.mp4
+  start_time: 2023-04-14T10:56:49
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel on side with faint ring
 
 dive8-barrel-11-04:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-11-04.mp4
@@ -67,6 +83,103 @@ dive8-barrel-11-04:
   step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
+  description: barrel on side with ring, around half buried
+
+dive8-barrel-11-12:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-11-12.mp4
+  start_time: 2023-04-14T11:12:07
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel with extra sheet, 45 degrees, around half buried
+
+dive8-barrel-11-21:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-11-21.mp4
+  start_time: 2023-04-14T11:21:05
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side with faint ring, around half buried
+
+dive8-barrel-11-33:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-11-33.mp4
+  start_time: 2023-04-14T11:33:47
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, around half buried
+
+dive8-barrel-12-55:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-12-55.mp4
+  start_time: 2023-04-14T12:55:15
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel 45 degree, about half buried
+
+dive8-barrel-13-07:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-13-07.mp4
+  start_time: 2023-04-14T13:07:36
+  step: 25
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, around half buried, tiered with ring
+
+dive8-barrel-13-08:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-13-08.mp4
+  start_time: 2023-04-14T13:08:55
+  step: 25
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, around half buried, tiered
+
+dive8-barrel-13-15:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-13-15.mp4
+  start_time: 2023-04-14T13:15:56
+  step: 25
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel, 45 degree, around half buried
+
+dive8-barrel-13-57:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-13-57.mp4
+  start_time: 2023-04-14T13:57:17
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, around half buried
+
+dive8-barrel-14-05:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-14-05.mp4
+  start_time: 2023-04-14T14:04:57
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, around half buried, with small hole in cap
+
+dive8-barrel-14-29:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-14-29.mp4
+  start_time: 2023-04-14T14:29:54
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel, 45 degree, around half buried
+
+dive8-barrel-14-32:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-14-32.mp4
+  start_time: 2023-04-14T14:32:51
+  step: 75
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: tiered barrel, 45 degree, around half buried, smooth round cap
+
+dive8-barrel-15-04:
+  input_path: data/dive-data/Dive8/clips/dive8-barrel-15-04.mp4
+  start_time: 2023-04-14T15:02:46
+  step: 50
+  navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: 45 degree barrel, broken in middle
 
 dive3-depthcharge-03-04:
   input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
@@ -74,6 +187,7 @@ dive3-depthcharge-03-04:
   step: 25
   navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
   object_name: depth_charge_mark_9_mod_1-scaled.ply
+  description: sideways depth charge
 
 dive3-mousetrap-13-10:
   input_path: data/dive-data/Dive3/clips/dive3-mousetrap-13-10.mp4
@@ -81,3 +195,4 @@ dive3-mousetrap-13-10:
   step: 25
   navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
   object_name: mousetrap-scaled.ply
+  description: mousetrap downwards, only fin visible
