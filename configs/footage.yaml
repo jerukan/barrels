@@ -6,7 +6,9 @@ default:
   timezone: US/Pacific
   step: ~
   navpath: ~
-  crop: True
+  # crop: [0, 120, 1920, 875]
+  crop: ~
+  maskpath: data/dive-data/footage-mask.png
   fps: 25
   increase_contrast: False
   denoise_depth: True
@@ -152,7 +154,7 @@ dive8-barrel-13-57:
 dive8-barrel-14-05:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-14-05.mp4
   start_time: 2023-04-14T14:04:57
-  step: 50
+  step: 25
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
   description: barrel on side, around half buried, with small hole in cap
@@ -168,7 +170,7 @@ dive8-barrel-14-29:
 dive8-barrel-14-32:
   input_path: data/dive-data/Dive8/clips/dive8-barrel-14-32.mp4
   start_time: 2023-04-14T14:32:51
-  step: 75
+  step: 50
   navpath: data/dive-data/Dive8/ROV Dive 8 nav.csv
   object_name: barrelsingle-scaled.ply
   description: tiered barrel, 45 degree, around half buried, smooth round cap
