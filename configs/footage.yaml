@@ -1,7 +1,7 @@
 # footage info for extracting keyframes and corresponding nav data per frame
 default:
   input_path: ~
-  output_dir: ~
+  output_dir: data/input_data
   start_time: ~
   timezone: US/Pacific
   step: ~
