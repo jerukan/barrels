@@ -15,6 +15,8 @@ default:
   object_name: ~
   description: ~
 
+# DIVE 8
+
 barrel1:
   input_path: data/dive-data/Dive8/clips/barrel1.mp4
   start_time: 2023-04-14T11:15:24
@@ -327,6 +329,67 @@ dive8-barrel-16-31:
   object_name: barrelsingle-scaled.ply
   description: tiered barrel 45 degree
 
+# DIVE 10
+
+dive10-barrel-23-35:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-23-35.mp4
+  start_time: 2023-04-15T23:35:33
+  step: 50
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  maskpath: data/dive-data/footage-mask-largearm.png
+  object_name: barrelsingle-scaled.ply
+  description: almost upright barrel with a lot of growth
+
+dive10-barrel-03-40:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-03-40.mp4
+  start_time: 2023-04-16T03:39:59
+  step: 25
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: almost upright barrel, lot of mushrooms growing
+
+dive10-barrel-03-43:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-03-43.mp4
+  start_time: 2023-04-16T03:42:46
+  step: 25
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, very slightly up
+
+dive10-barrel-03-44:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-03-44.mp4
+  start_time: 2023-04-16T03:44:38
+  step: 50
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, kelp/rope next to it, has hole in it
+
+dive10-barrel-03-47:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-03-47.mp4
+  start_time: 2023-04-16T03:47:32
+  step: 50
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, slightly up, some mushrooms
+
+dive10-barrel-03-55:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-03-55.mp4
+  start_time: 2023-04-16T03:55:03
+  step: 25
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side
+
+dive10-barrel-04-35:
+  input_path: data/dive-data/Dive10/clips/dive10-barrel-04-35.mp4
+  start_time: 2023-04-16T04:35:18
+  step: 25
+  navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, lots of mushrooms
+
+# DIVE 3
+
 dive3-depthcharge-03-04:
   input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
   start_time: 2023-04-07T03:04:54
@@ -336,10 +399,19 @@ dive3-depthcharge-03-04:
   description: sideways depth charge
 
 dive3-depthcharge-04-08:
-  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
+  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-04-08.mp4
   start_time: 2023-04-07T04:08:59
   step: 25
   navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  object_name: depth_charge_mark_9_mod_1-scaled.ply
+  description: sideways depth charge
+
+dive3-depthcharge-05-11:
+  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-05-11.mp4
+  start_time: 2023-04-07T05:10:31
+  step: 125
+  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  maskpath: data/dive-data/footage-mask-smallarm.png
   object_name: depth_charge_mark_9_mod_1-scaled.ply
   description: sideways depth charge
 
