@@ -329,6 +329,72 @@ dive8-barrel-16-31:
   object_name: barrelsingle-scaled.ply
   description: tiered barrel 45 degree
 
+# DIVE 9
+
+dive9-barrel-03-13:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-13.mp4
+  start_time: 2023-04-15T03:13:38
+  step: 25
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side a bit under half buried
+
+dive9-barrel-03-17:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-17.mp4
+  start_time: 2023-04-15T03:17:25
+  step: 75
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side mostly, with collapsed metal in middle
+
+dive9-barrel-03-21:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-21.mp4
+  start_time: 2023-04-15T03:20:59
+  step: 25
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, less than half buried
+
+dive9-barrel-03-39:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-39.mp4
+  start_time: 2023-04-15T03:39:39
+  step: 25
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: hollow barrel on side
+
+dive9-barrel-03-45:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-45.mp4
+  start_time: 2023-04-15T03:45:14
+  step: 25
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, less than half buried
+
+dive9-barrel-03-47:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-47.mp4
+  start_time: 2023-04-15T03:47:42
+  step: 50
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, less than half buried
+
+dive9-barrel-03-51:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-03-51.mp4
+  start_time: 2023-04-15T03:51:12
+  step: 25
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, less than half buried
+
+dive9-barrel-04-07:
+  input_path: data/dive-data/Dive9/clips/dive9-barrel-04-07.mp4
+  start_time: 2023-04-15T04:07:39
+  step: 75
+  navpath: data/dive-data/Dive9/ROV Dive 9 nav.csv
+  object_name: barrelsingle-scaled.ply
+  description: barrel on side, less than half buried
+
 # DIVE 10
 
 dive10-barrel-23-35:
