@@ -8,12 +8,66 @@ default:
   navpath: ~
   # crop: [0, 120, 1920, 875]
   crop: ~
-  maskpath: data/dive-data/footage-mask.png
+  maskpaths: [data/dive-data/footage-mask-hud.png]
   fps: 25
   increase_contrast: False
   denoise_depth: True
   object_name: ~
   description: ~
+
+# DIVE 3
+
+dive3-depthcharge-03-04:
+  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
+  start_time: 2023-04-07T03:04:54
+  step: 25
+  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  object_name: depth_charge_mark_9_mod_1-scaled.ply
+  description: sideways depth charge
+
+dive3-depthcharge-04-08:
+  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-04-08.mp4
+  start_time: 2023-04-07T04:08:59
+  step: 25
+  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  object_name: depth_charge_mark_9_mod_1-scaled.ply
+  description: sideways depth charge
+
+dive3-depthcharge-05-11:
+  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-05-11.mp4
+  start_time: 2023-04-07T05:10:31
+  step: 125
+  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  maskpaths: [data/dive-data/footage-mask-hud.png, data/dive-data/footage-mask-smallarm.png]
+  object_name: depth_charge_mark_9_mod_1-scaled.ply
+  description: sideways depth charge
+
+dive3-mousetrap-13-10:
+  input_path: data/dive-data/Dive3/clips/dive3-mousetrap-13-10.mp4
+  start_time: 2023-04-07T13:10:36
+  step: 25
+  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
+  object_name: mousetrap-scaled.ply
+  description: mousetrap downwards, only fin visible
+
+# DIVE 6
+
+dive6-smokefloat-10-17-26:
+  input_path: data/dive-data/Dive6/clips/dive6-smokefloat-10-17-26.mp4
+  start_time: 2023-04-13T10:17:12
+  step: 25
+  navpath: data/dive-data/Dive6/ROV Dive 6 nav.csv
+  object_name: smoke_float_mark_1-scaled.ply
+  description: smoke float on side, tilted upwards slightly
+
+dive6-smokefloat-10-20:
+  input_path: data/dive-data/Dive6/clips/dive6-smokefloat-10-20.mp4
+  start_time: 2023-04-13T10:19:52
+  step: 50
+  navpath: data/dive-data/Dive6/ROV Dive 6 nav.csv
+  maskpaths: [data/dive-data/footage-mask-hud.png, data/dive-data/footage-mask-rovbottom.png, data/dive-data/footage-mask-smallarm.png]
+  object_name: smoke_float_mark_1-scaled.ply
+  description: smoke float around half buried upright
 
 # DIVE 8
 
@@ -402,7 +456,7 @@ dive10-barrel-23-35:
   start_time: 2023-04-15T23:35:33
   step: 50
   navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
-  maskpath: data/dive-data/footage-mask-largearm.png
+  maskpaths: [data/dive-data/footage-mask-hud.png, data/dive-data/footage-mask-largearm.png]
   object_name: barrelsingle-scaled.ply
   description: almost upright barrel with a lot of growth
 
@@ -453,38 +507,3 @@ dive10-barrel-04-35:
   navpath: data/dive-data/Dive10/ROV Dive 10 nav.csv
   object_name: barrelsingle-scaled.ply
   description: barrel on side, lots of mushrooms
-
-# DIVE 3
-
-dive3-depthcharge-03-04:
-  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-03-04.mp4
-  start_time: 2023-04-07T03:04:54
-  step: 25
-  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
-  object_name: depth_charge_mark_9_mod_1-scaled.ply
-  description: sideways depth charge
-
-dive3-depthcharge-04-08:
-  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-04-08.mp4
-  start_time: 2023-04-07T04:08:59
-  step: 25
-  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
-  object_name: depth_charge_mark_9_mod_1-scaled.ply
-  description: sideways depth charge
-
-dive3-depthcharge-05-11:
-  input_path: data/dive-data/Dive3/clips/dive3-depthcharge-05-11.mp4
-  start_time: 2023-04-07T05:10:31
-  step: 125
-  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
-  maskpath: data/dive-data/footage-mask-smallarm.png
-  object_name: depth_charge_mark_9_mod_1-scaled.ply
-  description: sideways depth charge
-
-dive3-mousetrap-13-10:
-  input_path: data/dive-data/Dive3/clips/dive3-mousetrap-13-10.mp4
-  start_time: 2023-04-07T13:10:36
-  step: 25
-  navpath: data/dive-data/Dive3/ROV Dive 3 nav.csv
-  object_name: mousetrap-scaled.ply
-  description: mousetrap downwards, only fin visible
